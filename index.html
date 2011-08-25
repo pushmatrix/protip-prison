@@ -15,9 +15,6 @@
     function protip() {
       var tip = "#Protip: " + sentenceStarters.randomElement() + " " + items.randomElement().toLowerCase();
       $("#protip").html(tip);
-      
-      $("#tweet").html('<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-text="' + tip + "— " + location.href + '">Tweet</a>');
-      $.getScript('http://platform.twitter.com/widgets.js');
     }
     
   
@@ -98,7 +95,6 @@
   <center>
     <div id="buttons">
       <a href="#" id="moar_tips" class="button" target="_blank">Moar tips plz!</a>
-      <span id="tweet"></span>
     </div>
     <div id="credits">
       Created by <a href="http://twitter.com/pushmatrix" target="_blank">@pushmatrix</a> &#8212
