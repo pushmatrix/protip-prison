@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Protip Prison - Be prepared</title>
+  <script type="text/javascript" charset="utf-8" src="prison_items.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    var sentenceStarters = ["When going to prison, don't forget", "Prison is much better with", "Going to prison? Bring"]
+  
+    Array.prototype.randomElement = function() {
+      return this[Math.floor(Math.random() * this.length)];
+    }
+  
+    function protip() {
+      var tip = "#Protip: " + sentenceStarters.randomElement() + " " + items.randomElement().toLowerCase();
+      $("#protip").html(tip);
+      
+      $("#tweet").html('<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-text="' + tip + "— " + location.href + '">Tweet</a>');
+      $.getScript('http://platform.twitter.com/widgets.js');
+    }
+    
+  
+    $(document).ready(function() {
+      var twtTitle  = document.title;
+      var twtUrl    = location.href;
+      protip();
+
+      $("#moar_tips").click(function(e){
+         e.preventDefault();
+         $("#protip").fadeOut("medium", function() {
+           protip();
+           $(this).fadeIn("medium");
+         });
+      });
+    });
+  
+  </script>
+  <style>
+    body {
+      padding-top: 50px;
+      background: #EFEFED;
+      color: #B8B0A2;
+      margin: 0px auto;
+    }
+    #protip {
+      margin: 0px auto;
+      width: 600px;
+      line-height: 51px;
+      font-family: Arial Black;
+      font-size: 54px;
+    }
+    #buttons {
+      margin: 0px auto;
+      margin: 50px 0 15px 0;
+    }
+    #credits a {
+      color: #F5AF40; text-decoration: none;
+    }
+    #credits a:hover {
+      color: #F5AF40; text-decoration: underline;
+    }
+    
+    .button {
+      margin: 0px 25px;
+      -moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+      -webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+      box-shadow:inset 0px 1px 0px 0px #fce2c1;
+      background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
+      background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
+      background-color:#ffc477;
+      -moz-border-radius:6px;
+      -webkit-border-radius:6px;
+      border-radius:6px;
+      border:1px solid #eeb44f;
+      display:inline-block;
+      color:#ffffff;
+      font-family:Arial Black;
+      font-size:17px;
+      font-weight:bold;
+      padding:12px 27px;
+      text-decoration:none;
+      text-shadow:1px 1px 0px #cc9f52;
+      }.button:hover {
+        background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
+        background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+        background-color:#fb9e25;
+        }.button:active {
+          position:relative;
+          top:1px;
+        }
+  </style>
+<body id="protipprison" onload="">
+  <div id="protip">
+  </div>
+  <center>
+    <div id="buttons">
+      <a href="#" id="moar_tips" class="button" target="_blank">Moar tips plz!</a>
+      <span id="tweet"></span>
+    </div>
+    <div id="credits">
+      Created by <a href="http://twitter.com/pushmatrix" target="_blank">@pushmatrix</a> &#8212
+      Data sourced from <a href="http://bit.ly/nrEwID">Buzzdata</a>
+    </div>
+  </center>
+</body>
